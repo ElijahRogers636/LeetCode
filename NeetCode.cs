@@ -373,6 +373,56 @@ namespace LeetCode
             return -1;
         }
 
-        //<======================================== Evaluate Reverse Polish Notation ========================================>
+        //<======================================== 3151. Special Array I ========================================>
+        public bool IsArraySpecial(int[] nums)
+        {
+            bool isEven = IsEven(nums[0]);
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] % 2 == 0 && isEven != false)
+                {
+                    return false;
+                }
+                if (nums[i] % 2 != 0 && isEven == false)
+                {
+                    return false;
+                }
+                isEven = IsEven(nums[i]);
+            }
+            return true;
+        }
+
+        bool IsEven(int num)
+        {
+            if (num % 2 == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        //<======================================== 1910. Remove All Occurrences of a Substring ========================================>
+        public string RemoveOccurrences(string s, string part)
+        {
+            StringBuilder tempS = new StringBuilder(s);
+            int index = 0;
+            while (index != -1)
+            {
+                index = s.IndexOf(part);
+                if (index != -1)
+                {
+                    tempS.Remove(index, part.Length);
+                    s = tempS.ToString();
+                }
+            }
+            return s;
+        }
+
+        //<========================================  ========================================>
+
+
+
+
+
     }
 }
